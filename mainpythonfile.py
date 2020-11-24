@@ -3,7 +3,6 @@ from tkinter import *
 import mysql.connector
 from tkinter import messagebox
 
-#Hello world
 login=Tk()
 login.geometry('543x232+100+200')
 login.maxsize(543,232)
