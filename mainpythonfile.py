@@ -4,6 +4,13 @@ from tkinter import ttk
 import mysql.connector
 from tkinter import messagebox
 
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="poah",
+    database="password_manager"
+)
+
 login=Tk()
 login.geometry('543x232+50+100')
 login.maxsize(543,232)
@@ -28,7 +35,6 @@ Login_button=Frame(login, bg="#40a6c3", relief="sunken", borderwidth=5)
 Login_button.pack(side="bottom",anchor="s")
 Button(Login_button, text="Login",font="Dubai",command = login_command).grid(ipadx =50)
 
-
 def mainwindow():
     root = Tk()
     root.geometry("570x532+700+220")
@@ -37,14 +43,6 @@ def mainwindow():
     root.maxsize(570, 532)
 
     root.title("Password Manager")
-    '''
-        mydb = mysql.connector.connect(
-          host="localhost",
-          user="root",
-          password="poah",
-          database="password_manager"
-                )
-    '''
 
     def add():
         def add_entry():
@@ -92,22 +90,54 @@ def mainwindow():
 
 #Defining previous data
     def prevdata():
-
         prev = Tk()
-        prev.geometry("800x800")
+        prev.geometry("600x600")
         prev.maxsize(800, 800)
         prev.minsize(500, 500)
         prev.configure(bg='#f08080')
         prev.iconbitmap("iconpm.ico")
         prev.title("All Passwords")
 
+        frame_data = Frame(prev, bg="grey", borderwidth=2, relief="groove")
+        frame_data.pack()
 
-        #-----------------------------------------------------------------------
+        # -------------------------------------------------------------------
+        # treeview table defination
+
+        tree_scrollbar = Scrollbar(frame_data)
+        tree_scrollbar.pack(side=RIGHT, fill=Y)
+        my_tree = ttk.Treeview(frame_data, yscrollcommand=tree_scrollbar.set)
+        my_tree.pack(ipady=200)
+
+        tree_scrollbar.config(command=my_tree.yview)
+
+        my_tree['columns'] = ("Website", "Username", "Password")
+
+        my_tree.column("#0", width=0, stretch=NO)
+        my_tree.column("Website", anchor="center", width=200)
+        my_tree.column("Username", anchor=CENTER, width=200)
+        my_tree.column("Password", anchor=CENTER, width=200)
+
+        my_tree.heading("#0", text="", anchor="w")
+        my_tree.heading("Website", text="Website", anchor="center")
+        my_tree.heading("Username", text="Username", anchor="center")
+        my_tree.heading("Password", text="Password", anchor="center")
+
+        # data insertion
+
+
+        mycur = mydb.cursor()    #chal gya shukar h blle bllle
+        mycur.execute("SELECT * FROM DATB")
+        result = mycur.fetchall()
+
+        count = 0
+        for rec in result:
+            my_tree.insert(parent='', index='end', iid=count, text="", values=(rec[0], rec[1], rec[2]))
+            count += 1
+        
+        # -----------------------------------------------------------------------
 
         prev.mainloop()
-
-
-
 
     # main loop code
     frame_label = Frame(root, bg="#40a6c3", relief="groove", borderwidth=5)
