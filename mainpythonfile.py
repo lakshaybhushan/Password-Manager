@@ -1,10 +1,11 @@
 #importing modules
 from tkinter import *
+from tkinter import ttk
 import mysql.connector
 from tkinter import messagebox
 
 login=Tk()
-login.geometry('543x232+100+200')
+login.geometry('543x232+50+100')
 login.maxsize(543,232)
 login.minsize(532,232)
 login.iconbitmap("iconpm.ico")
@@ -58,14 +59,13 @@ def mainwindow():
             addwin.destroy()
 
         addwin = Tk()
-        addwin.geometry("393x300+200+220")
+        addwin.geometry("393x300+200+400")
         addwin.maxsize(393, 300)
         addwin.minsize(393, 300)
         addwin.configure(bg='#c5fad5')
         addwin.iconbitmap("iconpm.ico")
         addwin.title("New Entry")
-
-        Label(addwin, text=" Website's Name ", font="Helvetica 12 bold", bg="#c5fad5").grid()
+        Label(addwin, text=" Website's Name ", font="Helvetica 12 bold", bg="#c5fad5").grid(row=0)
         Label(addwin, text="Username", font="Helvetica 12 bold", bg="#c5fad5").grid(row=1)
         Label(addwin, text="Password", font="Helvetica 12 bold", bg="#c5fad5").grid(row=2)
 
@@ -101,16 +101,8 @@ def mainwindow():
         prev.iconbitmap("iconpm.ico")
         prev.title("All Passwords")
 
-        
 
-
-
-
-
-
-
-
-
+        #-----------------------------------------------------------------------
 
         prev.mainloop()
 
