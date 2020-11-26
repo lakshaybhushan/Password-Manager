@@ -18,7 +18,7 @@ login.maxsize(543,232)
 login.minsize(532,232)
 login.iconbitmap("iconpm.ico")
 login.title('Login Page')
-login.configure(bg='light blue')
+login.configure(bg='#49beb7')
 
 
 def login_command():
@@ -27,18 +27,18 @@ def login_command():
         return mainwindow()
         print(mainwindow())
 
-Label(login, text ="___Login___", font = "Monaco 20 bold",relief="ridge",bg="yellow", borderwidth=5).pack(fill = X)
-Label(login, text="Master Key", font="Calibri 20 bold" ,bg ='light blue').place(x=8,y=55)
+Label(login, text ="___Login___", font = "Monaco 20 bold",relief="ridge",bg="#f38181", borderwidth=5).pack(fill = X)
+Label(login, text="Master Key", font="Calibri 20 bold" ,bg ='#49beb7').place(x=8,y=55)
 login_pass = StringVar()
 mainpage_entry = Entry(login, textvariable=login_pass,show="*",font = "monaco 10 ")
 mainpage_entry.pack(side ='top',ipadx=20 , ipady=10  ,pady=10)
-Login_button=Frame(login, bg="#40a6c3", relief="sunken", borderwidth=5)
+Login_button=Frame(login, bg="#247e6c", relief="sunken", borderwidth=5)
 Login_button.pack(side="bottom",anchor="s")
 Button(Login_button, text="Login",font="Dubai",command = login_command).grid(ipadx =50)
 
 def mainwindow():
     root = Tk()
-    root.geometry("570x532+700+220")
+    root.geometry("570x532+630+220")
     root.iconbitmap("iconpm.ico")
     root.minsize(570, 532)
     root.maxsize(570, 532)
@@ -97,14 +97,14 @@ def mainwindow():
 #Defining previous data
     def prevdata():
         prev = Tk()
-        prev.geometry("595x600")
+        prev.geometry("595x600+1250+100")
         prev.maxsize(595, 600)
         prev.minsize(595, 600)
         prev.configure(bg='#f08080')
         prev.iconbitmap("iconpm.ico")
         prev.title("All Passwords")
 
-        frame_data = Frame(prev, bg="#f08080", borderwidth=2, relief="sunken")
+        frame_data = Frame(prev, bg="#11cbd7", borderwidth=2, relief="sunken")
         frame_data.pack()
 
         # -------------------------------------------------------------------
