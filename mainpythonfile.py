@@ -22,7 +22,7 @@ login.configure(bg='light blue')
 
 
 def login_command():
-    if mainpage_entry.get() == "" :
+    if mainpage_entry.get() == "poah" :
         mainpage_entry.delete(0, 'end')
         return mainwindow()
         print(mainwindow())
@@ -50,6 +50,8 @@ def mainwindow():
             mycur = mydb.cursor()
             command = f"insert into datb values('{websiteentry.get()}', '{usernameentry.get()}', '{passwordentry.get()}')"
             mycur.execute(command)
+            messagebox.showinfo("Password Manager", "Your details have been submitted!")
+
             mydb.commit()
 
             websiteentry.delete(0, 'end')
@@ -159,4 +161,6 @@ def mainwindow():
     bg.pack(padx=20,pady=20)
 
 login.mainloop()
- 
+
+
+
