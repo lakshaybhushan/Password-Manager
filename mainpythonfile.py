@@ -95,14 +95,14 @@ def mainwindow():
 #Defining previous data
     def prevdata():
         prev = Tk()
-        prev.geometry("600x600")
-        prev.maxsize(600, 600)
-        prev.minsize(600, 600)
+        prev.geometry("595x600")
+        prev.maxsize(595, 600)
+        prev.minsize(595, 600)
         prev.configure(bg='#f08080')
         prev.iconbitmap("iconpm.ico")
         prev.title("All Passwords")
 
-        frame_data = Frame(prev, bg="#f08080", borderwidth=2, relief="ridge")
+        frame_data = Frame(prev, bg="#f08080", borderwidth=2, relief="sunken")
         frame_data.pack()
 
         # -------------------------------------------------------------------
@@ -119,7 +119,7 @@ def mainwindow():
 
         my_tree.column("#0", width=0, stretch=NO)
         my_tree.column("Website", anchor="center", width=200)
-        my_tree.column("Username", anchor=CENTER, width=200)
+        my_tree.column("Username", anchor=CENTER, width=170)
         my_tree.column("Password", anchor=CENTER, width=200)
 
         my_tree.heading("#0", text="", anchor="w")
