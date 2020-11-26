@@ -11,6 +11,7 @@ mydb = mysql.connector.connect(
     database="password_manager"
 )
 
+
 login=Tk()
 login.geometry('543x232+50+100')
 login.maxsize(543,232)
@@ -46,8 +47,10 @@ def mainwindow():
 
     def add():
         def add_entry():
-            print(f"{websiteentry.get(), usernameentry.get(), passwordentry.get()}")
-            messagebox.showinfo("Thankyou!", "Your details have been submitted")
+            mycur = mydb.cursor()
+            command = f"insert into datb values('{websiteentry.get()}', '{usernameentry.get()}', '{passwordentry.get()}')"
+            mycur.execute(command)
+            mydb.commit()
 
             websiteentry.delete(0, 'end')
             usernameentry.delete(0, 'end')
@@ -83,6 +86,7 @@ def mainwindow():
         Button(button_frame, text="Submit", font="Dubai", command=add_entry).grid(row=0, ipadx=65)
         Button(button_frame, text="Close", font="Dubai", command=close).grid(row=0, column=1, ipadx=70)
 
+
         addwin.mainloop()
 
     def logoff():
@@ -92,17 +96,17 @@ def mainwindow():
     def prevdata():
         prev = Tk()
         prev.geometry("600x600")
-        prev.maxsize(800, 800)
-        prev.minsize(500, 500)
+        prev.maxsize(600, 600)
+        prev.minsize(600, 600)
         prev.configure(bg='#f08080')
         prev.iconbitmap("iconpm.ico")
         prev.title("All Passwords")
 
-        frame_data = Frame(prev, bg="grey", borderwidth=2, relief="groove")
+        frame_data = Frame(prev, bg="#f08080", borderwidth=2, relief="ridge")
         frame_data.pack()
 
         # -------------------------------------------------------------------
-        # treeview table defination
+        # treeview table definition
 
         tree_scrollbar = Scrollbar(frame_data)
         tree_scrollbar.pack(side=RIGHT, fill=Y)
@@ -123,10 +127,8 @@ def mainwindow():
         my_tree.heading("Username", text="Username", anchor="center")
         my_tree.heading("Password", text="Password", anchor="center")
 
-        # data insertion
 
-
-        mycur = mydb.cursor()    #chal gya shukar h blle bllle
+        mycur = mydb.cursor()#chal gya shukar h blle bllle
         mycur.execute("SELECT * FROM DATB")
         result = mycur.fetchall()
 
