@@ -22,10 +22,14 @@ login.configure(bg='#49beb7')
 
 
 def login_command():
-    if mainpage_entry.get() == "" :
-        mainpage_entry.delete(0, 'end')
+    if mainpage_entry.get() == "poah" :  #Set your password/masterkey here --------
+        mainpage_entry.delete(0,'end')
         return mainwindow()
         print(mainwindow())
+
+    else:
+        messagebox.showerror("Please Try Again","Access Denied!")
+        
 
 Label(login, text ="___Login___", font = "Monaco 20 bold",relief="ridge",bg="#f38181", borderwidth=5).pack(fill = X)
 Label(login, text="Master Key", font="Calibri 20 bold" ,bg ='#49beb7').place(x=8,y=55)
@@ -65,12 +69,12 @@ def mainwindow():
         addwin.geometry("393x300+200+400")
         addwin.maxsize(393, 300)
         addwin.minsize(393, 300)
-        addwin.configure(bg='#ffb6c1')
+        addwin.configure(bg='#E5C4F6')
         addwin.iconbitmap("iconpm.ico")
         addwin.title("New Entry")
-        Label(addwin, text=" Website's Name ", font="Helvetica 12 bold", bg="#ffb6c1").grid(row=0)
-        Label(addwin, text="Username", font="Helvetica 12 bold", bg="#ffb6c1").grid(row=1)
-        Label(addwin, text="Password", font="Helvetica 12 bold", bg="#ffb6c1").grid(row=2)
+        Label(addwin, text=" Website's Name ", font="Helvetica 12 bold", bg="#E5C4F6").grid(row=0)
+        Label(addwin, text="Username", font="Helvetica 12 bold", bg="#E5C4F6").grid(row=1)
+        Label(addwin, text="Password", font="Helvetica 12 bold", bg="#E5C4F6").grid(row=2)
 
         Websiteval = StringVar()
         Usernameval = StringVar()
@@ -83,7 +87,7 @@ def mainwindow():
         websiteentry.grid(row=0, column=1, ipady=5, ipadx=5)
         usernameentry.grid(row=1, column=1, ipady=5, ipadx=5)
         passwordentry.grid(row=2, column=1, ipady=5, ipadx=5)
-        button_frame = Frame(addwin, bg="#000080", relief="raised", borderwidth=6)
+        button_frame = Frame(addwin, bg="#ff496c", relief="raised", borderwidth=6)
         button_frame.place(y=240)
         Button(button_frame, text="Submit", font="Dubai", command=add_entry).grid(row=0, ipadx=65)
         Button(button_frame, text="Close", font="Dubai", command=close).grid(row=0, column=1, ipadx=70)
