@@ -31,7 +31,7 @@ def login_command():
         messagebox.showerror("Please Try Again","Access Denied!")
         
 
-Label(login, text ="___Login___", font = "Monaco 20 bold",relief="ridge",bg="#f38181", borderwidth=5).pack(fill = X)
+Label(login, text ="___Login___",font = "Monaco 20 bold",relief="ridge",bg="#f38181", borderwidth=5).pack(fill = X)
 Label(login, text="Master Key", font="Calibri 20 bold" ,bg ='#49beb7').place(x=8,y=55)
 login_pass = StringVar()
 mainpage_entry = Entry(login, textvariable=login_pass,show="*",font = "monaco 10 ")
@@ -111,7 +111,6 @@ def mainwindow():
         frame_data = Frame(prev, bg="#11cbd7", borderwidth=2, relief="sunken")
         frame_data.pack()
 
-        # -------------------------------------------------------------------
         # treeview table definition
 
         tree_scrollbar = Scrollbar(frame_data)
@@ -134,7 +133,7 @@ def mainwindow():
         my_tree.heading("Password", text="Password", anchor="center")
 
 
-        mycur = mydb.cursor()#chal gya shukar h blle bllle
+        mycur = mydb.cursor()
         mycur.execute("SELECT * FROM DATB")
         result = mycur.fetchall()
 
@@ -142,8 +141,6 @@ def mainwindow():
         for rec in result:
             my_tree.insert(parent='', index='end', iid=count, text="", values=(rec[0], rec[1], rec[2]))
             count += 1
-        
-        # -----------------------------------------------------------------------
 
         prev.mainloop()
 
@@ -159,7 +156,7 @@ def mainwindow():
     Button(frame_button, text="Log Off", font="Monaco 15", command=logoff).grid(row=0, column=2 ,ipadx=40)
 
     # Image Source
-    photo = PhotoImage(file="password.png",master=root)  #Great achivement --13 hrs
+    photo = PhotoImage(file="password.png",master=root)
     bg =Label(root,image= photo)
     bg.image=photo
     bg.pack(padx=20,pady=20)
